@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LoginRegisterScene.unity
+    guid: 57bffffc55e0640e0996143bfc6cb97a
+  - enabled: 1
+    path: Assets/Scenes/race_area01.unity
+    guid: eaa40ca93db9a48f984b795849840c84
