@@ -7,7 +7,8 @@ namespace UnityStandardAssets.Vehicles.Car
     {
         FrontWheelDrive,
         RearWheelDrive,
-        FourWheelDrive
+        FourWheelDrive,
+        Kart
     }
 
     internal enum SpeedType
@@ -217,6 +218,15 @@ namespace UnityStandardAssets.Vehicles.Car
                     m_WheelColliders[2].motorTorque = m_WheelColliders[3].motorTorque = thrustTorque;
                     break;
 
+                case CarDriveType.Kart:
+                    thrustTorque = accel * (m_CurrentTorque * 50f);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        m_WheelColliders[i].motorTorque = thrustTorque;
+                    }
+                    // m_WheelColliders[2].motorTorque = m_WheelColliders[3].motorTorque = thrustTorque;
+                    break;
+
             }
 
             for (int i = 0; i < 4; i++)
@@ -330,6 +340,15 @@ namespace UnityStandardAssets.Vehicles.Car
 
                     m_WheelColliders[1].GetGroundHit(out wheelHit);
                     AdjustTorque(wheelHit.forwardSlip);
+                    break;
+
+                case CarDriveType.Kart:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        m_WheelColliders[i].GetGroundHit(out wheelHit);
+
+                        AdjustTorque(wheelHit.forwardSlip);
+                    }
                     break;
             }
         }
